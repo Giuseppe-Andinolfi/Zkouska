@@ -1,0 +1,87 @@
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Scanner;
+
+public class Main {
+    static ArrayList<InsuredPerson> insuredPeople = new ArrayList();
+
+    public Main() {
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        while(true) {
+            while(true) {
+                System.out.println("------------------------------");
+                System.out.println("Evidence pojistenych");
+                System.out.println("------------------------------");
+                System.out.println("Vyberte si akci:");
+                System.out.println("1 – Pridat noveho pojisteneho");
+                System.out.println("2 – Vypsat vsechny pojistene");
+                System.out.println("3 – Vyhledat pojisteneho podle jmena a prijmeni");
+                System.out.println("4 – Ukoncit program");
+                int action = scanner.nextInt();
+                if (action == 1) {
+                    addInsuredPerson();
+                } else if (action == 2) {
+                    printInsuredPeople();
+                } else if (action == 3) {
+                    searchInsuredPerson();
+                } else if (action == 4) {
+                    return;
+                }
+            }
+        }
+    }
+
+    private static void addInsuredPerson() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Zadejte jmeno pojisteneho:");
+        String name = scanner.nextLine();
+        System.out.println("Zadejte prijmeni:");
+        String surname = scanner.nextLine();
+        System.out.println("Zadejte telefonni cislo:");
+        String phoneNumber = scanner.nextLine();
+        System.out.println("Zadejte vek:");
+        int age = scanner.nextInt();
+        InsuredPerson insuredPerson = new InsuredPerson(name, surname, phoneNumber, age);
+        insuredPeople.add(insuredPerson);
+        System.out.println("Data byla ulozena. Pokracujte libovolnou klavesou...");
+        scanner.nextLine();
+    }
+
+    private static void printInsuredPeople() {
+        Iterator var0 = insuredPeople.iterator();
+
+        while(var0.hasNext()) {
+            InsuredPerson insuredPerson = (InsuredPerson)var0.next();
+            System.out.println(insuredPerson);
+        }
+
+        System.out.println("Pokracujte libovolnou klavesou...");
+        Scanner scanner = new Scanner(System.in);
+        scanner.nextLine();
+    }
+
+    private static void searchInsuredPerson() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Zadejte jmeno pojisteneho:");
+        String name = scanner.nextLine();
+        System.out.println("Zadejte prijmeni:");
+        String surname = scanner.nextLine();
+        Iterator var3 = insuredPeople.iterator();
+
+        InsuredPerson insuredPerson;
+        do {
+            if (!var3.hasNext()) {
+                System.out.println("Pojisteny s danym jmenem a prijmenim nebyl nalezen.");
+                return;
+            }
+
+            insuredPerson = (InsuredPerson)var3.next();
+        } while(!insuredPerson.getName().equals(name) || !insuredPerson.getSurname().equals(surname));
+
+        System.out.println(insuredPerson);
+    }
+}

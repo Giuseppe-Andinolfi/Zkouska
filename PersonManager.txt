@@ -1,0 +1,33 @@
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class InsuredPersonManager {
+    private List<InsuredPerson> insuredPersons = new ArrayList();
+
+    public InsuredPersonManager() {
+    }
+
+    public void addInsuredPerson(InsuredPerson insuredPerson) {
+        this.insuredPersons.add(insuredPerson);
+    }
+
+    public InsuredPerson findInsuredPerson(String firstName, String lastName) {
+        Iterator var3 = this.insuredPersons.iterator();
+
+        InsuredPerson insuredPerson;
+        do {
+            if (!var3.hasNext()) {
+                return null;
+            }
+
+            insuredPerson = (InsuredPerson)var3.next();
+        } while(!insuredPerson.getFirstName().equals(firstName) || !insuredPerson.getLastName().equals(lastName));
+
+        return insuredPerson;
+    }
+
+    public List<InsuredPerson> getAllInsuredPersons() {
+        return this.insuredPersons;
+    }
+}

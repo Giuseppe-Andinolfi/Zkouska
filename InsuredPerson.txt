@@ -1,0 +1,43 @@
+public class InsuredPerson {
+    private final String name;
+    private final String surname;
+    private String firstName;
+    private String lastName;
+    private int age;
+    private String phoneNumber;
+
+    public InsuredPerson(String name, String surname, String phoneNumber, int age) {
+        this.name = name;
+        this.surname = surname;
+        this.phoneNumber = phoneNumber;
+        this.age = age;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public String getSurname() {
+        return this.surname;
+    }
+
+    public String getPhoneNumber() {
+        return this.phoneNumber;
+    }
+
+    public int getAge() {
+        return this.age;
+    }
+
+    public String toString() {
+        return "Jmeno: " + this.name + ", Prijmeni: " + this.surname + ", Telefonni cislo: " + this.phoneNumber + ", Vek: " + this.age;
+    }
+
+    public Object getFirstName() {
+        return null;
+    }
+
+    public Object getLastName() {
+        return null;
+    }
+}
